@@ -6766,7 +6766,7 @@ BOOST_AUTO_TEST_CASE(error_transfer_non_payable_fallback)
 			A a;
 
 			function() public {
-				a.transfer(100);
+				address(a).transfer(100);
 			}
 		}
 	)";
@@ -6800,7 +6800,7 @@ BOOST_AUTO_TEST_CASE(error_send_non_payable_fallback)
 			A a;
 
 			function() public {
-				require(a.send(100));
+				require(address(a).send(100));
 			}
 		}
 	)";
@@ -6836,7 +6836,7 @@ BOOST_AUTO_TEST_CASE(does_not_error_transfer_regular_function)
 			A a;
 
 			function() public {
-				a.transfer();
+				address(a).transfer();
 			}
 		}
 	)";
@@ -7868,6 +7868,23 @@ BOOST_AUTO_TEST_CASE(getter_is_memory_type)
 		auto const& retType = f.second->returnParameterTypes().at(0);
 		BOOST_CHECK(retType->dataStoredIn(DataLocation::Memory));
 	}
+}
+
+BOOST_AUTO_TEST_CASE(warn_deprecated_contract_overloads)
+{
+	char const* text = R"(
+		contract C {
+			var x = this.balance;
+			x;
+		}
+	)";
+	CHECK_WARNING(text, "Using contract member \"balance\" is deprecated.");
+	text = R"(
+		contract C {
+			this.transfer(1);
+		}
+	)";
+	CHECK_WARNING(text, "Using contract member \"transfer\" is deprecated.");
 }
 
 BOOST_AUTO_TEST_SUITE_END()

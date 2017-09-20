@@ -7,6 +7,7 @@ Features:
  * Support and recommend using ``emit EventName();`` to call events explicitly.
  * Syntax Analyser: Do not warn about experimental features if they do not concern code generation.
  * Syntax Checker: Mark ``throw`` as an error as experimental 0.5.0 feature.
+ * Syntax Checker: Issue warning when using overloads of ``address`` on contract instances.
 
 Bugfixes:
  * Assembly: Raise error on oversized number literals in assembly.

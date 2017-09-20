@@ -1830,6 +1830,30 @@ bool TypeChecker::visit(MemberAccess const& _memberAccess)
 
 	if (exprType->category() == Type::Category::Contract)
 	{
+		if (
+			(
+				possibleMembers.front().type->category() == Type::Category::Function &&
+				!dynamic_cast<FunctionType const&>(*possibleMembers.front().type).hasDeclaration() &&
+				(
+					memberName == "call" || memberName == "callcode" || memberName == "delegatecall" ||
+					memberName == "transfer" || memberName == "send"
+				)
+			)
+			||
+			(
+				possibleMembers.front().type->category() == Type::Category::Integer &&
+				memberName == "balance"
+			)
+		)
+			m_errorReporter.warning(
+				_memberAccess.location(),
+				"Using contract member \"" + memberName +"\" is deprecated." +
+				" Cast the contract to \"address\" type to perform these calls."
+			);
+	}
+
+	if (exprType->category() == Type::Category::Contract)
+	{
 		if (auto callType = dynamic_cast<FunctionType const*>(type(_memberAccess).get()))
 		{
 			auto kind = callType->kind();
