@@ -2,6 +2,8 @@
 
 Features:
  * Code Generator: Assert that ``k != 0`` for ``molmod(a, b, k)`` and ``addmod(a, b, k)`` as experimental 0.5.0 feature.
+ * Code Generator: Use STATICCALL opcode for calling view and pure functions. Enable
+   via `pragma experimental STATICCALL;`.
  * Type Checker: Disallow uninitialized storage pointers as experimental 0.5.0 feature.
 
 
