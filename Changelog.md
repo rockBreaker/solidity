@@ -2,7 +2,7 @@
 
 Features:
  * Code Generator: Assert that ``k != 0`` for ``molmod(a, b, k)`` and ``addmod(a, b, k)`` as experimental 0.5.0 feature.
- * General: Allow providing reason string for ``revert()``.
+ * General: Allow providing reason string for ``revert()`` and ``require()``.
  * Type Checker: Disallow uninitialized storage pointers as experimental 0.5.0 feature.
 
 
