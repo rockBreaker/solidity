@@ -1578,8 +1578,6 @@ bool ArrayType::canBeUsedExternally(bool _inLibrary) const
 		return true;
 	else if (!m_baseType->canBeUsedExternally(_inLibrary))
 		return false;
-	else if (m_baseType->category() == Category::Array && m_baseType->isDynamicallySized())
-		return false;
 	else
 		return true;
 }
