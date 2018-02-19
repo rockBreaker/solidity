@@ -10,6 +10,7 @@ Bugfixes:
  * Resolver: Properly determine shadowing for imports with aliases.
  * Standalone Assembly: Do not ignore input after closing brace of top level block.
  * Standard JSON: catch errors properly when invalid "sources" are passed
+ * Type Checker: Properly detect which array and struct types are unsupported by the old ABI encoder.
  * Type Checker: Properly warn when using ``_offset`` and ``_slot`` for constants in inline assembly.
 
 ### 0.4.20 (2018-02-14)
