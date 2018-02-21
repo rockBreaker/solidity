@@ -136,6 +136,7 @@ protected:
 			m_compiler.reset(false);
 			m_compiler.addSource("", registrarCode);
 			m_compiler.setOptimiserSettings(m_optimize, m_optimizeRuns);
+			m_compiler.setEVMVersion(m_evmVersion);
 			BOOST_REQUIRE_MESSAGE(m_compiler.compile(), "Compiling contract failed");
 			s_compiledRegistrar.reset(new bytes(m_compiler.object("FixedFeeRegistrar").bytecode));
 		}
