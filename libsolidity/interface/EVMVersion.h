@@ -57,6 +57,7 @@ public:
 	std::string name() const { return m_version == Version::Byzantium ? "byzantium" : "homestead"; }
 
 	bool hasReturndatacopy() const { return m_version == Version::Byzantium; }
+	bool hasStaticCall() const { return m_version == Version::Byzantium; }
 
 	/// Whether we have to retain the costs for the call opcode itself (false),
 	/// or whether we can just forward easily all remaining gas (true).
