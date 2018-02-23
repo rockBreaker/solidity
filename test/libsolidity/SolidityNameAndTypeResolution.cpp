@@ -6857,7 +6857,7 @@ BOOST_AUTO_TEST_CASE(create2_as_variable)
 	)";
 	CHECK_ALLOW_MULTI(text, (std::vector<std::pair<Error::Type, std::string>>{
 		{Error::Type::Warning, "Variable is shadowed in inline assembly by an instruction of the same name"},
-		{Error::Type::Warning, "only available after the Metropolis"},
+		{Error::Type::Warning, "The \"create2\" instruction is not supported for the VM version"},
 		{Error::Type::DeclarationError, "Unbalanced stack"}
 	}));
 }
