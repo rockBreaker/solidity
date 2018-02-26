@@ -7418,7 +7418,7 @@ BOOST_AUTO_TEST_CASE(non_external_fallback)
 			function () external { }
 		}
 	)";
-	CHECK_WARNING(text, "Experimental features are turned on.");
+	CHECK_SUCCESS_NO_WARNINGS(text);
 	text = R"(
 		pragma experimental "v0.5.0";
 		contract C {
